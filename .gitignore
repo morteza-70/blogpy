@@ -5,8 +5,5 @@
 # virtual envirment
 venv/
 
-# data base
-db.sqlite
-
 # migration
 blog/migration
