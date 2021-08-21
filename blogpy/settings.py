@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'blogpy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'NAME': 'retentionback',
+        'USER': 'retention',
+        'PASSWORD': 'retention',
         'HOST': 'localhost',
-        'PORT': '5000'
+        'PORT': '5432',
     }
 }
 
