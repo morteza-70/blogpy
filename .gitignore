@@ -7,3 +7,6 @@ venv/
 
 # migration
 blog/migration
+
+# static files
+files/
