@@ -35,3 +35,6 @@ class IndexPage(TemplateView):
         }
 
         return render(request,'index.html', context)
+
+class ContactPage(TemplateView):
+    template_name = 'page-contact.html'

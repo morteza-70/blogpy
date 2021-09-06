@@ -59,7 +59,7 @@
             <h2 class="header__nav-heading h6">هدایت به</h2>
 
             <ul class="header__nav">
-                <li><a href="page-contact.html" title="">تماس</a></li>
+                <li><a href="{% url 'contact' %}" title="">تماس</a></li>
                 <li><a href="page-about.html" title="">درباره</a></li>
                 <li>
                     <a href="category.html" title="">دسته بندی</a>
@@ -100,7 +100,7 @@
                                     </a>
                                     <ul class="entry__meta">
                                         <li><a href="#0">{{ promote_articles.author }}</a></li>
-                                        <li>{{ promote_articles.created_at }} </li>
+                                        <li>{{ promote_articles.created_at }}</li>
                                     </ul>
                                 </div>
                             </div> <!-- end entry__content -->
