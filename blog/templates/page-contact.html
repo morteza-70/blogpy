@@ -48,7 +48,7 @@
 <header class="s-header header">
 
     <div class="header__logo">
-        <a class="logo" href="index.html">
+        <a class="logo" href="{% url 'index' %}">
             BLOGPY
         </a>
     </div> <!-- end header__logo -->
@@ -59,13 +59,10 @@
         <h2 class="header__nav-heading h6">هدایت به</h2>
 
         <ul class="header__nav">
-            <li><a href="page-contact.html" title="">تماس</a></li>
-            <li><a href="page-about.html" title="">درباره</a></li>
-            <li>
-                <a href="#0" title="">دسته بندی</a>
-            </li>
-
-            <li class="current"><a href="{% url 'index' %}" title="">خانه</a></li>
+            <li class="current"><a href="{% url 'contact' %}" title="">تماس</a></li>
+            <li><a href="{% url 'about' %}" title="">درباره</a></li>
+            <li><a href="{% url 'category' %}" title="">دسته بندی</a></li>
+            <li><a href="{% url 'index' %}" title="">خانه</a></li>
         </ul> <!-- end header__nav -->
 
         <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">بستن</a>
