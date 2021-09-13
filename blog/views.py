@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 from .models import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, serializers
 
 # Create your views here.
 class IndexPage(TemplateView):
@@ -68,5 +68,20 @@ class ArticleAPIView(TemplateView):
 
             return Response({'data': data}, status=status.HTTP_200_OK)
         
+        except:
+            return Response({'status': "Internal Server Error, We'll Check It Later" }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+
+class SingleArticleAPIView(TemplateView):
+    
+    def get(slef, request, format=None):
+        try:
+            article_title = request.GET('article_title')
+            article = Article.objects.filter(title_containe=article_title)
+            serialized_data = serializers.SingleArticleSerializers(article, many=True)
+            data = serialized_data.data
+
+            return Response({'data': data}, status=status.HTTP_200_OK)
+
         except:
             return Response({'status': "Internal Server Error, We'll Check It Later" }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
