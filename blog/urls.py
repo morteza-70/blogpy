@@ -9,4 +9,5 @@ urlpatterns = [
 
     url(r'^article/$', views.SingleArticleAPIView.as_view(), name='single_article'),
     url(r'^article/all/$', views.ArticleAPIView.as_view(), name='all_articles'),
+    url(r'^article/search/$', views.SearchArticleAPIView.as_view(), name='search_article'),
 ]
