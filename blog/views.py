@@ -85,7 +85,9 @@ class SingleArticleAPIView(APIView):
             return Response({'data': data}, status=status.HTTP_200_OK)
 
         except:
-            return Response({'status': "Internal Server Error, We'll Check It Later" }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'status': "Internal Server Error, We'll Check It Later" },
+                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                            
 
 # search in articles with api
 class SearchArticleAPIView(APIView):
@@ -114,6 +116,8 @@ class SearchArticleAPIView(APIView):
         except:
             return Response({'status': "Internal Server Error, We'll Check It Later"},
                             status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
 
 # submit articles with api
 class SubmitArticleAPIView(APIView):
@@ -149,3 +153,25 @@ class SubmitArticleAPIView(APIView):
 
         except:
             return Response({'status': "Internal Server Error, We'll Check It Later"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
+class UpdateArticleAPIView(APIView):
+
+    def post(self, request, format=None):
+        try:
+            serializer = serializers.UpdateArticleCoverSerializer(data=request.data)
+
+            if serializer.is_valid():
+                article_id = serializer.data.get('article_id')
+                cover = request.FILES['cover']
+            else:
+                return Response({'status': 'Bad Request.'}, status=status.HTTP_400_BAD_REQUEST)
+
+            Article.objects.filter(id=article_id).update(cover=cover)
+
+            return Response({'status':'OK'}, status=status.HTTP_200_OK)
+
+        except:
+            return Response({'status': "Internal Server Error, We'll Check It Later"},
+                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
