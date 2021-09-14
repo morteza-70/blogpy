@@ -182,7 +182,7 @@ class DeleteArticleAPIView(APIView):
 
     def post(self, request, format=None):
         try:
-            serializer = serializers.DeleteArticlerSerializer(data=request.data)
+            serializer = serializers.DeleteArticleSerializer(data=request.data)
 
             if serializer.is_valid():
                 article_id = serializer.data.get('article_id')

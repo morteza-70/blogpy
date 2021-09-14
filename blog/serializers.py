@@ -18,5 +18,5 @@ class UpdateArticleCoverSerializer(serializers.Serializer):
     article_id = serializers.IntegerField(required=True, allow_null=False)
     cover = serializers.FileField(required=True, allow_null=False, allow_empty_file=False)
 
-class DeleteArticlerSerializer(serializers.Serializer):
+class DeleteArticleSerializer(serializers.Serializer):
     article_id = serializers.IntegerField(required=True, allow_null=False)
