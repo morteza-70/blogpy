@@ -70,7 +70,8 @@ class ArticleAPIView(TemplateView):
             return Response({'data': data}, status=status.HTTP_200_OK)
         
         except:
-            return Response({'status': "Internal Server Error, We'll Check It Later" }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'status': "Internal Server Error, We'll Check It Later" }, 
+                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
 
 class SingleArticleAPIView(APIView):
@@ -169,6 +170,26 @@ class UpdateArticleAPIView(APIView):
                 return Response({'status': 'Bad Request.'}, status=status.HTTP_400_BAD_REQUEST)
 
             Article.objects.filter(id=article_id).update(cover=cover)
+
+            return Response({'status':'OK'}, status=status.HTTP_200_OK)
+
+        except:
+            return Response({'status': "Internal Server Error, We'll Check It Later"},
+                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class DeleteArticleAPIView(APIView):
+
+    def post(self, request, format=None):
+        try:
+            serializer = serializers.DeleteArticleSerializer(data=request.data)
+
+            if serializer.is_valid():
+                article_id = serializer.data.get('article_id')
+            else:
+                return Response({'status': 'Bad Request.'}, status=status.HTTP_400_BAD_REQUEST)
+
+            Article.objects.filter(id=article_id).delete()
 
             return Response({'status':'OK'}, status=status.HTTP_200_OK)
 
